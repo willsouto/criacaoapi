@@ -65,6 +65,12 @@ class User extends Authenticatable
                     $geoSave->lng = $user->address->geo->lng;
                     $addressSave->geo()->save($geoSave);
 
+                $companySave =  Company::firstOrCreate(['user_id' => $user->id]);
+                $companySave->name = $user->company->name;
+                $companySave->catchPhrase = $user->company->catchPhrase;
+                $companySave->bs = $user->company->bs;
+                $userSave->company()->save($companySave);
+
 
             $userSave->save();
         }
