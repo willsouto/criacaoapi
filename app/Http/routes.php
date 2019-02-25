@@ -11,6 +11,29 @@
 |
 */
 
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('main.save_json');
+});
+
+
+Route::resource('json', 'JsonController');
+
+Route::resource('users', 'UsersController');
+
+
+
+
+
+
+Route::get('api/users', function(){
+    return view('all_users');
+});
+
+Route::get('api/users/{id}', function(){
+    return view('user_by_id');
+});
+
+Route::get('api/users/{id}/posts', function(){
+    return view('user_posts');
 });

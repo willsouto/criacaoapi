@@ -18,7 +18,7 @@ class CreateCompaniesTable extends Migration
             $table->string('name');
             $table->string('catchPhrase');
             $table->string('bs');
-//            $table->timestamps();
+            $table->timestamps();
         });
     }
 

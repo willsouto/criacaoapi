@@ -17,7 +17,7 @@ class CreateGeosTable extends Migration
             $table->integer('address_id');
             $table->string('lat');
             $table->string('lng');
-//            $table->timestamps();
+            $table->timestamps();
         });
     }
 
