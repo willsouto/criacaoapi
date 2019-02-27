@@ -38,8 +38,8 @@ class JsonController extends Controller
      */
     public function store(Request $request)
     {
-        $post = Post::savePosts($request->posts);
-        $user = User::saveUsers($request->users);
+        if(!empty($request->posts)) $post = Post::savePosts($request->posts);
+        if(!empty($request->users)) $user = User::saveUsers($request->users);
 
         return view('main.save_json', compact('post','user'));
     }

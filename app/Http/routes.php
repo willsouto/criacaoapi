@@ -21,19 +21,27 @@ Route::resource('json', 'JsonController');
 
 Route::resource('users', 'UsersController');
 
+Route::get('cadastrar', function(){
+    return view('main.create');
+});
+Route::get('users/edit/{id}', function($id){
+    return view('main.edit', compact('id'));
+});
 
-
+Route::get('users/posts/{id}', function($id){
+    return view('main.posts', compact('id'));
+});
 
 
 
 Route::get('api/users', function(){
-    return view('all_users');
+    return view('api.all_users');
 });
 
-Route::get('api/users/{id}', function(){
-    return view('user_by_id');
+Route::get('api/users/{id}', function($id){
+    return view('api.user_by_id', compact('id'));
 });
 
-Route::get('api/users/{id}/posts', function(){
-    return view('user_posts');
+Route::get('api/users/{id}/posts', function($id){
+    return view('api.user_posts', compact('id'));
 });

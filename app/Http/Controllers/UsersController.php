@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -15,7 +17,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
+        return view('main.list');
     }
 
     /**
@@ -23,9 +25,11 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        User::saveUser($request);
+        $user = 'Usuario cadastrado com sucesso!';
+        return view('main.create', compact('user'));
     }
 
     /**
@@ -34,9 +38,9 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        return view('main.list');
     }
 
     /**
@@ -70,7 +74,9 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        echo $request->get('id');
+        User::saveUser($request);
+        return view('main.save', compact('id'));
     }
 
     /**
@@ -81,6 +87,8 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::findOrFail($id)->delete();
+        return view('main.delete', compact('id'));
+
     }
 }
