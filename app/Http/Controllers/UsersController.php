@@ -74,7 +74,6 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        echo $request->get('id');
         User::saveUser($request);
         return view('main.save', compact('id'));
     }

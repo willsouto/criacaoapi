@@ -44,6 +44,7 @@ class User extends Authenticatable
             $user->address->geo()->delete();
             $user->address()->delete();
             $user->company()->delete();
+            $user->post()->delete();
         });
     }
 
